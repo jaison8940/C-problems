@@ -1,0 +1,61 @@
+/*
+Example Input
+1
+5
+fdjkd
+dfjdk
+dfd
+fdjkd
+kkjjk
+Example Output
+61
+*/
+#include <stdio.h>
+#include<string.h>
+void cal(int n)
+{
+    int i,j,l,r,t=0;
+    float s=0.0,p=0.0;
+    char str[21],u[n][101];
+    for(i=0;i<n;i++)
+    {
+        l=0;
+        r=0;
+        t=0;
+        p=0.0;
+        scanf("%s",str);
+        strcpy(u[i],str);
+        for(j=0;j<i;j++)
+        {
+            if(strcmp(u[j],str)==0)
+            {
+                t=1;
+            }
+        }
+        for(j=0;j<strlen(str);j++)
+        {
+            if((str[j]=='d' || str[j]=='f') && l==0)
+            {
+                p+=0.2;
+                l=1;
+                r=0;
+            }
+            else if(str[j]=='d' || str[j]=='f') p+=0.4;
+            if((str[j] == 'j' || str[j]=='k') && r==0) p+=0.2,r=1,l=0;
+            else if(str[j] == 'j' || str[j]=='k') p+=0.4;
+        }
+        if(t==0) s+=p;
+        else s+=p/2;
+    }
+    printf("%.f\n",s*10);
+}
+int main() {
+	int t,n;
+	scanf("%d",&t);
+	for(int i=0;i<t;i++)
+	{
+	    scanf("%d",&n);
+	    cal(n);
+	}
+	return 0;
+}
