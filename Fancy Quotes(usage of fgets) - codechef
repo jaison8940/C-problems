@@ -1,0 +1,28 @@
+/*
+Example Input:
+2
+i do not have any fancy quotes
+when nothing goes right go left
+Example Output:
+Real Fancy
+regularly fancy
+*/
+#include <stdio.h>
+int main() {
+	char str[101],s[101];
+	int n,l;
+	scanf("%d\n",&n);
+	while(fgets(str,101,stdin))
+	{
+	    char *p=str;
+	    int c=0;
+	    while(sscanf(p,"%s%n",s,&l)==1)
+	    {
+	        if(strcmp(s,"not")==0) c=1;
+	        p+=l;
+	    }
+	    if(c==1) printf("Real Fancy\n");
+	    else printf("regularly fancy\n");
+	}
+	return 0;
+}
