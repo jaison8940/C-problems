@@ -1,0 +1,36 @@
+/*
+input:
+2
+output:
+00
+01
+10
+11
+*/
+#include <stdio.h>
+void binarystrings(int n,int s[],int m)
+{
+    if(n<1) {
+        int i;
+        for(i=0;i<m;i++)
+        printf("%d",s[i]);
+        printf("\n");
+        
+    }
+    else
+    {
+        s[n-1] = 0;
+        binarystrings(n-1,s,m);
+        s[n-1] = 1;
+        binarystrings(n-1,s,m);
+    }
+}
+int main() {
+	
+	int n,m;
+	int s[101];
+	scanf("%d",&n);
+	m=n;
+	binarystrings(n,s,m);
+	return 0;
+}
