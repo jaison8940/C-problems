@@ -1,0 +1,33 @@
+/*
+Input:
+skillrack
+Output:
+rack
+kill
+s
+Input:
+apples
+Output:
+les
+app
+*/
+#include <stdio.h>
+#include<string.h>
+int main() {
+	//code
+	char str[1001];
+	int x,i,l,e,st;
+	scanf("%s\n%d",str,&x);
+	l=strlen(str);
+    st=strlen(str)-x;
+    if(strlen(str)%x!=0) e=(strlen(str)/x)+1;
+    else e=strlen(str)/x;
+    for(i=1;i<=e;i++)
+    {
+        printf("%s\n",&str[st]);
+        str[st]='\0';
+        if(st-x<0) st=0;
+        else st=st-x;
+    }
+	return 0;
+}
